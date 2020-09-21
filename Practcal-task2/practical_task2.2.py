@@ -13,6 +13,9 @@ y = [alpha*x_i + betha + np.random.normal(loc=0.0, scale=1.0) for x_i in x]
 def linear(x,a,b):
     return a*x+b
 
+def rational(x,a,b):
+    return a/(1+b*x)
+
 linearModel = Model(linear)
 lpar = Parameters()
 lpar.add('a', value=0, min=-1, max=1,brute_step=0.001)

@@ -13,27 +13,6 @@ y = [alpha*x_i + betha + np.random.normal(loc=0.0, scale=1.0) for x_i in x]
 def linear(x,a,b):
     return a*x+b
 
-def rational(x,a,b):
-    return a/(1+b*x)
-
-#loss function
-def mse(a,b,y,func):
-    x = np.arange(0,1.01,0.01)
-    return np.sum((func(x,a,b)-y)**2)
-
-def bruteForce(func, loss_f, y):
-    minimum = float('inf')
-    best = (1,1)
-    a = np.arange(0,1,0.01)
-    b = np.arange(0,1,0.01)
-    for i in a:
-        for j in b:
-            value = loss_f(i,j,y,func)
-            if value < minimum:
-                minimum = value
-                best = (i,j)
-    return best
-
 linearModel = Model(linear)
 lpar = Parameters()
 lpar.add('a', value=0, min=-1, max=1,brute_step=0.001)
